@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
+import Loader from './Loader';
 
 class App extends React.Component {
   /* constructor(props) {
@@ -13,7 +15,6 @@ class App extends React.Component {
   state = { lat: null, errorMessage: '' };
 
   componentDidMount() {
-    console.log('Mounted');
     window.navigator.geolocation.getCurrentPosition(
       position => {
         //Called setState which comes from React
@@ -25,20 +26,17 @@ class App extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    console.log('Updated');
-  }
+  componentDidUpdate() {}
 
   // React needs to define render
   render() {
-    console.log('rendering');
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
     if (!this.state.errorMessage && this.state.lat) {
-      return <div>Latitude: {this.state.lat}</div>;
+      return <SeasonDisplay lat={this.state.lat} />;
     }
-    return <div>Loading</div>;
+    return <Loader message="Please allow location request" />;
   }
 }
 
