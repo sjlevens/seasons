@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-  constructor(props) {
+  /* constructor(props) {
     //super(props) -- reference to the parents constructor function nescesary
     super(props);
 
     // THE ONLY TIME DIRECT ASSIGNMENT TO STATE
     this.state = { lat: null, errorMessage: '' };
-  }
+  } */
+  // Same syntax as constructor
+  state = { lat: null, errorMessage: '' };
 
   componentDidMount() {
     console.log('Mounted');
